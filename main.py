@@ -1,7 +1,6 @@
 from time import time
 import pygame
 import numpy as np
-from collections import deque
 from bfs import BFS
 pygame.init()
 
