@@ -34,7 +34,7 @@ class BFS:
         S = Point(start[0], start[1])
         G = Point(goal[0], goal[1])
         queue = [S]  # tạo danh sách queue có 1 phần tử là điểm đầu vào
-        visited = set()  
+        visited = set()                                                                                                                                                                                                         
         visited.add((S.x, S.y))
         while queue:
             value = queue.pop(0)
