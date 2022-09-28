@@ -1,0 +1,46 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "untitled2.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "Dungeon.tsx": {
+            "scaleInDock": 1.5
+        },
+        "untitled.tmx": {
+            "scale": 1.7733333333333332,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 239.66165413533835,
+                "y": 239.37969924812035
+            }
+        },
+        "untitled2.tmx": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 192,
+                "y": 409
+            }
+        }
+    },
+    "last.exportedFilePath": "D:/CaoNguyenGiaHung/AI/project-to-vl-ai/map",
+    "map.height": 60,
+    "map.lastUsedExportFilter": "CSV files (*.csv)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 8,
+    "map.tileWidth": 8,
+    "map.width": 60,
+    "openFiles": [
+        "untitled2.tmx"
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "untitled2.tmx",
+        "untitled.tmx"
+    ]
+}
