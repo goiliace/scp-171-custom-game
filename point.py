@@ -22,6 +22,7 @@ class Point:
 
     def __eq__(self, other: object) -> bool:
         return False if other == None else (self.x == other.x and self.y == other.y)
+
     # manhattan_distance
     def heuristic_function(self, other: object):
         # return np.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)

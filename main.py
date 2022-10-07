@@ -61,8 +61,7 @@ b = Algorithm(shape, shape, grid)
 
 boss = CharacterSpriteSheet("img/boss1.png", 3, 4)
 human = CharacterSpriteSheet("img/human.png", 5, 4)
-floor = pygame.transform.scale(
-    pygame.image.load("img/floor10.png"), (height, height))
+floor = pygame.transform.scale(pygame.image.load("img/floor10.png"), (height, height))
 
 key_2s = pygame.image.load("img/key_2.png")
 key_2s = pygame.transform.scale(key_2s, (30, 30))
@@ -78,8 +77,7 @@ game_over = pygame.image.load("img/game_over.jpg")
 game_over = pygame.transform.scale(game_over, (height, height))
 dooropen = pygame.image.load("img/dooropen.png")
 buff = pygame.image.load("img/buff.png")
-buff = pygame.transform.scale(
-    buff, (buff.get_width() // 5, buff.get_height() // 5))
+buff = pygame.transform.scale(buff, (buff.get_width() // 5, buff.get_height() // 5))
 shield = pygame.image.load("img/shield.png")
 shield = pygame.transform.scale(
     shield, (shield.get_width() // 5, shield.get_height() // 5)
@@ -177,12 +175,9 @@ while GAME_PLAY:
         if isFrozen5s:
             time5s = time()
             isFrozen5s = False
-    key_1_point, countKeyOpenDoor = checkKey(
-        x_h, y_h, key_1_point, countKeyOpenDoor)
-    key_2_point, countKeyOpenDoor = checkKey(
-        x_h, y_h, key_2_point, countKeyOpenDoor)
-    key_3_point, countKeyOpenDoor = checkKey(
-        x_h, y_h, key_3_point, countKeyOpenDoor)
+    key_1_point, countKeyOpenDoor = checkKey(x_h, y_h, key_1_point, countKeyOpenDoor)
+    key_2_point, countKeyOpenDoor = checkKey(x_h, y_h, key_2_point, countKeyOpenDoor)
+    key_3_point, countKeyOpenDoor = checkKey(x_h, y_h, key_3_point, countKeyOpenDoor)
     if buff_point:
         if distance(buff_point[0], buff_point[1], x_h, y_h) < 3:
             buff_point = None
@@ -252,7 +247,7 @@ while GAME_PLAY:
 
     boss.draw_boss(screen, y * pixel - 10, x * pixel - 28, L1, direction_boss)
     # Drawing a red rectangle at the position of the boss.
-    pygame.draw.rect(screen, (255, 0, 0), (y * pixel, x * pixel, pixel, pixel))
+    # pygame.draw.rect(screen, (255, 0, 0), (y * pixel, x * pixel, pixel, pixel))
 
     human.draw_human(screen, y_h * pixel - 10, x_h * pixel - 32, L, direction)
     if corr5s:
@@ -275,8 +270,7 @@ while GAME_PLAY:
             x_old, y_old = np.random.randint(0, 120), np.random.randint(0, 120)
 
             while grid[x_old][y_old] == -1:
-                x_old, y_old = np.random.randint(
-                    0, 120), np.random.randint(0, 120)
+                x_old, y_old = np.random.randint(0, 120), np.random.randint(0, 120)
             isShield = False
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -337,16 +331,9 @@ while GAME_PLAY:
     ) and isPress:
         isPress = False
         timebfs = time()
-        # path = b.bfs((x_old, y_old), (x_h, y_h), grid)
-        # print(time() - timebfs)
         gameTimeList.append(b.getTimeAll((x_old, y_old), (x_h, y_h)))
         path = b.getPath((x_old, y_old), (x_h, y_h))
-
-        # timedfs = time()
-        # path1 = b.dfs((x_old, y_old), (x_h, y_h), grid)
-        # print(time()-timedfs)
         timePress = time()
-        # print(path)
     if time() - timePress > speed:
         isPress = True
     if x_old == x_h and y_old == y_h and not isShield:
@@ -354,4 +341,4 @@ while GAME_PLAY:
     pygame.display.update()
     clock.tick(60)
 # print(gameTimeList)
-pickle.dump(gameTimeList, open("timeAl.dat", 'wb'))
+pickle.dump(gameTimeList, open("timeAl.dat", "wb"))

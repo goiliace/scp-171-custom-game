@@ -1,4 +1,3 @@
-
 from point import Point
 from time import time
 
@@ -28,6 +27,12 @@ class Algorithm:
             (x + 1, y),
         ]
 
+    def checkVisited(self, point):
+        for p in self.visited:
+            if p == point:
+                return True
+        return False
+
     def getPath(self, start, goal):
         self.astar(start, goal)
         self.path.reverse()
@@ -42,20 +47,43 @@ class Algorithm:
             start_time = time()
             self.greedy(start, goal)
             return ["Greedy", time() - start_time]
+        elif method == "dfs":
+            start_time = time()
+            self.dfs(start, goal)            
+            return ["DFS", time() - start_time]
         elif method == "bfs":
             start_time = time()
             self.bfs(start, goal)
             return ["BFS", time() - start_time]
 
     def getTimeAll(self, start, goal):
-        methods = ["astar", "greedy", "bfs"]
+        methods = ["astar", "greedy", "bfs", "dfs"]
         return [self.gameTimeOne(start, goal, method) for method in methods]
-
+    def dfs(self, start, goal):
+        self.reset()
+        S = Point(start[0], start[1])
+        G = Point(goal[0], goal[1])
+        stack = [S]
+        
+        while stack:
+            value = stack.pop(-1)
+            if value.x == G.x and value.y == G.y:
+                return self.find_path(value)
+            neighbours = self.getNeighbours(value.x, value.y)
+            for nx, ny in neighbours:
+                if (
+                    (nx, ny) not in self.visited
+                    and (nx >= 0 and nx < self.height and ny >= 0 and ny < self.width)
+                    and (self.grid[nx][ny] != -1)
+                ):
+                    tmp = Point(nx, ny, par=value)
+                    stack.append(tmp)
+                    self.visited.add((tmp.x, tmp.y))
     def bfs(self, start, goal):
         self.reset()
         S = Point(start[0], start[1])
         G = Point(goal[0], goal[1])
-        queue = [S]  # tạo danh sách queue có 1 phần tử là điểm đầu vào
+        queue = [S] 
 
         self.visited.add((S.x, S.y))
         while queue:
